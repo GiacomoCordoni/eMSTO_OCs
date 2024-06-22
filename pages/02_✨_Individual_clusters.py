@@ -56,9 +56,9 @@ fig1_1.update_traces(marker=dict(size=4, color="#000000", opacity=0.1,
                         line=dict(width=0.1,color="#ffffff"))
                     )
 
-fig1_2 = px.scatter(df.loc[df["vbok"]], x="col", y="mag", hover_data="source_id", width=400, height=800,
-        color= "vbroad", color_continuous_scale = "rdbu_r")
-fig1_2.update_traces(marker=dict(size=7,
+# fig1_2 = px.scatter(df.loc[df["vbok"]], x="col", y="mag", hover_data="source_id", width=400, height=800,
+#         color= "vbroad", color_continuous_scale = "rdbu_r")
+# fig1_2.update_traces(marker=dict(size=7,
 #                         line=dict(width=0.0,color="#000000"))
 #                     )
 
