@@ -41,72 +41,71 @@ dfresults["loga"] = numpy.log10(dfresults["age"]*1e9)
 list_clusters = dfresults.loc[dfresults["flag_vbroad"]].index
 # start plotting part
 
-debug = True
-if not debug:
-    ###### first panel on the left
-    fig1_1 = px.density_heatmap(dftoff, x="dcn", y="vbroad", 
-                            nbinsx=35, nbinsy=22, color_continuous_scale="greys")
 
-    xmed, ymed, q16, q84, N = median_trend(dftoff["dcn"], dftoff["vbroad"], nbins=8)
-    xmed = numpy.array(xmed)
-    ymed = numpy.array(ymed)
-    fig1_2 = px.scatter(x=xmed, y=ymed, 
-            error_y=(q84-ymed), error_y_minus=(ymed-q16))
-    fig1_2.update_traces(marker=dict(size=12, color="#0096ff", opacity=0.8,
-                        line=dict(width=0.8,color="#000000")),
-                        error_y=dict(color="#000000", width=0.1)
-                    )
-    fig1_3 = px.line(x=xmed, y=ymed)
-    fig1_3.update_traces(line=dict(width=1.8,color="#0096ff"))
-    fig_dcvb = go.Figure(data = fig1_1.data + fig1_2.data + fig1_3.data).update_layout(
-            coloraxis=fig1_1.layout.coloraxis
-        )
-    fig_dcvb.update_layout(xaxis_title="ΔColor",
-                    yaxis_title="v<sub>broad</sub>",
-                    coloraxis_colorbar=dict(title="Counts"))
+# ###### first panel on the left
+# fig1_1 = px.density_heatmap(dftoff, x="dcn", y="vbroad", 
+#                         nbinsx=35, nbinsy=22, color_continuous_scale="greys")
 
-    ####### second panel on the left
+# xmed, ymed, q16, q84, N = median_trend(dftoff["dcn"], dftoff["vbroad"], nbins=8)
+# xmed = numpy.array(xmed)
+# ymed = numpy.array(ymed)
+# fig1_2 = px.scatter(x=xmed, y=ymed, 
+#         error_y=(q84-ymed), error_y_minus=(ymed-q16))
+# fig1_2.update_traces(marker=dict(size=12, color="#0096ff", opacity=0.8,
+#                     line=dict(width=0.8,color="#000000")),
+#                     error_y=dict(color="#000000", width=0.1)
+#                 )
+# fig1_3 = px.line(x=xmed, y=ymed)
+# fig1_3.update_traces(line=dict(width=1.8,color="#0096ff"))
+# fig_dcvb = go.Figure(data = fig1_1.data + fig1_2.data + fig1_3.data).update_layout(
+#         coloraxis=fig1_1.layout.coloraxis
+#     )
+# fig_dcvb.update_layout(xaxis_title="ΔColor",
+#                 yaxis_title="v<sub>broad</sub>",
+#                 coloraxis_colorbar=dict(title="Counts"))
 
-    fig2_1 = px.scatter(dfresults, x="age", y="vbmax",
-                hover_data="name", 
-                opacity=0.99
-            )
-    fig2_1.update_traces(marker=dict(size=12, opacity=0.8,
-                line=dict(width=0.8,color="#000000"))
-            )
-    fig_corrage = go.Figure(data = fig2_1.data)
+# ####### second panel on the left
 
-    fig_corrage.update_layout(xaxis_title="Age",
-                    yaxis_title="v<sub>broad</sub><sup>max</sup>",
-                    xaxis_range=[0,1.5], yaxis_range=[150, 390])
+# fig2_1 = px.scatter(dfresults, x="age", y="vbmax",
+#             hover_data="name", 
+#             opacity=0.99
+#         )
+# fig2_1.update_traces(marker=dict(size=12, opacity=0.8,
+#             line=dict(width=0.8,color="#000000"))
+#         )
+# fig_corrage = go.Figure(data = fig2_1.data)
+
+# fig_corrage.update_layout(xaxis_title="Age",
+#                 yaxis_title="v<sub>broad</sub><sup>max</sup>",
+#                 xaxis_range=[0,1.5], yaxis_range=[150, 390])
 
 
-    fig2 = px.scatter(dfresults, x="loga", y="stdcol_fid", 
-                        hover_data="name", 
-                        opacity=0.99)
-    fig2.update_traces(marker=dict(size=12, opacity=0.8,
-                        line=dict(width=0.8,color="#000000"))
-                    )
-    fig_dcage = go.Figure(data = fig2.data)
+# fig2 = px.scatter(dfresults, x="loga", y="stdcol_fid", 
+#                     hover_data="name", 
+#                     opacity=0.99)
+# fig2.update_traces(marker=dict(size=12, opacity=0.8,
+#                     line=dict(width=0.8,color="#000000"))
+#                 )
+# fig_dcage = go.Figure(data = fig2.data)
 
-    fig_dcage.update_layout(xaxis_title="Age",
-                    yaxis_title="ΔColor",
-                    )
+# fig_dcage.update_layout(xaxis_title="Age",
+#                 yaxis_title="ΔColor",
+#                 )
 
-    container1 = st.container(border=True)
-    col1, col2, col3 = st.columns([1.5, 1, 1.0]) #col2, col3
+# container1 = st.container(border=True)
+# col1, col2, col3 = st.columns([1.5, 1, 1.0]) #col2, col3
 
-    with container1: 
-        with col1:
-            st.subheader("$\Delta\mathrm{Color}$ vs. $v_\mathrm{broad}$")
-            st.plotly_chart(fig_dcvb, use_container_width=True)
+# with container1: 
+#     with col1:
+#         st.subheader("$\Delta\mathrm{Color}$ vs. $v_\mathrm{broad}$")
+#         st.plotly_chart(fig_dcvb, use_container_width=True)
 
-        with col2:
-            st.subheader("Correlation vs. Age")
-            st.plotly_chart(fig_corrage, use_container_width=True)       
-        
-        with col3:
-            st.subheader("$\Delta\mathrm{Color}$ vs. Age")
-            st.plotly_chart(fig_dcage, use_container_width=True)
+#     with col2:
+#         st.subheader("Correlation vs. Age")
+#         st.plotly_chart(fig_corrage, use_container_width=True)       
+    
+#     with col3:
+#         st.subheader("$\Delta\mathrm{Color}$ vs. Age")
+#         st.plotly_chart(fig_dcage, use_container_width=True)
 
 
