@@ -33,7 +33,7 @@ st.write("""
 We detect a general positive correlation between turn-off color and projected stellar rotation, with slow-rotating stars predominantly found on the bluer side of the turn-off. Comparing our observations with theoretical models, we find that the eMSTO morphology is well-reproduced by a single population formed with a high rotation rate, and observed with rotation axis inclination ranging between 0◦ (pole-on) and 90◦ (edge-on). 
 """)
 
-st.image("./img/img2.png", width=600, caption="Comparison between observed maximum Gaia projected rotational velocities and predicted maximum equatorial rotation velocity from PARSEC models")
+st.image("./img/img2_1.png", caption="Comparison between observed color spread and maximum Gaia projected rotational velocities, and prediction from PARSEC models")
 
 st.write("""         
 This contrasts with observations of Magellanic Clouds clusters, where a population of non-rotating stars appears to be ubiquitous in clusters younger than 700 Myr. However, we note that our interpretation, while successfully explaining the overall eMSTO morphology, cannot fully explain the observed projected rotational velocities. Additionally, two young clusters, NGC 3532 and NGC 2287, exhibit moderate evidence of a split main sequence in color and rotation, suggesting a possible small spread in the initial rotation rate. Finally, we advise caution in determining the ages of young clusters from non-rotating isochrones, as neglecting the effects of stellar rotation can impact the isochrone dating by up to factors of 5-20%.
