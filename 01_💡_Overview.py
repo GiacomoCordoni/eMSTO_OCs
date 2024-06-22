@@ -43,6 +43,6 @@ This contrasts with observations of Magellanic Clouds clusters, where a populati
 st.image("./img/img1_1.png", caption="Results for the 17 analyzed clusters")
 
 st.write("""
-Please note that the App is still a work in progress. 
+Please note that the page is **still being updated**. 
          For any questions, information or collaborations, feel free to contact us by mail at giacomo.cordoni@anu.edu.au  
     """)
