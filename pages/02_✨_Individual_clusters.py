@@ -6,16 +6,9 @@ Main page for Dashboard information -> general information about work and data i
 '''
 
 import streamlit as st
-from PIL import Image
 	# basic
-import os
-import numpy
+import os, numpy 
 import pandas as pd
-import seaborn as sns
-from scipy import stats
-from copy import copy
-import math
-import glob
 import plotly.express as px
 import plotly.graph_objects as go
 import plotly.figure_factory as ff

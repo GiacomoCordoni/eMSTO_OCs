@@ -9,8 +9,6 @@ import streamlit as st
 	# basic
 import os, numpy
 import pandas as pd
-from scipy import stats
-from copy import copy
 import plotly.express as px
 import plotly.graph_objects as go
 import plotly.figure_factory as ff

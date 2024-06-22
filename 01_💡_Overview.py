@@ -3,7 +3,6 @@ Created on 4 Feb
 @author: Giacomo Cordoni
 Main page for Dashboard information -> general information about work and data included in the dashboard
 '''
-from pylab import *
 import streamlit as st
 from PIL import Image
 
