@@ -120,28 +120,28 @@ fig1_1.update_traces(marker=dict(size=4, color="#000000", opacity=0.1,
 #                   ) #yaxis_range=[20,5]
 
 
-container1 = st.container()
-col1, col2, col3 = st.columns(3) 
+# container1 = st.container()
+# col1, col2, col3 = st.columns(3) 
 
-with container1: 
-    with col1:
-        st.subheader("Colour Magnitude Diagram")
-        st.plotly_chart(fig_cmd, use_container_width=True)
-    with col2:
-        st.subheader("Turn-off $\Delta\mathrm{Color}$ dist.")
-        st.plotly_chart(fig_todist, use_container_width=True)     
-    with col3:
-        st.subheader("Turn-off $v_\mathrm{broad}$ dist. ")
-        st.plotly_chart(fig_vbtodist, use_container_width=True)
+# with container1: 
+#     with col1:
+#         st.subheader("Colour Magnitude Diagram")
+#         st.plotly_chart(fig_cmd, use_container_width=True)
+#     with col2:
+#         st.subheader("Turn-off $\Delta\mathrm{Color}$ dist.")
+#         st.plotly_chart(fig_todist, use_container_width=True)     
+#     with col3:
+#         st.subheader("Turn-off $v_\mathrm{broad}$ dist. ")
+#         st.plotly_chart(fig_vbtodist, use_container_width=True)
 
 
-container2 = st.container()
-col4, col5  = st.columns(2)
-with container2:   
-    with col4:
-        st.header("$\Delta\mathrm{Color}$ - $v_\mathrm{broad}$  relation")
-        st.info("$R_\mathcal{S} = %.3f \pm %.3f$" %(dfto.loc[cluster_name, "corr"], dfto.loc[cluster_name,"ecorr"]))
-        st.plotly_chart(fig_vbdc, use_container_width=True)
+# container2 = st.container()
+# col4, col5  = st.columns(2)
+# with container2:   
+#     with col4:
+#         st.header("$\Delta\mathrm{Color}$ - $v_\mathrm{broad}$  relation")
+#         st.info("$R_\mathcal{S} = %.3f \pm %.3f$" %(dfto.loc[cluster_name, "corr"], dfto.loc[cluster_name,"ecorr"]))
+#         st.plotly_chart(fig_vbdc, use_container_width=True)
         
 
 
