@@ -14,8 +14,6 @@ import plotly.graph_objects as go
 import plotly.figure_factory as ff
 
 
-
-
 st.set_page_config(page_title="Individual clusters",layout="wide", page_icon="✨")
 
 st.title("Individual clusters results")
@@ -70,35 +68,36 @@ fig_cmd.update_layout(xaxis_title="G<sub>BP</sub> - G<sub>BP</sub>",
                   coloraxis_colorbar=dict(title="v<sub>broad</sub>"),
                   yaxis_range=[17,5])
 
-toff_hist_data = [df.loc[df["in_toff"], "dcn"]]
-toff_group_labels = [""] #, "Group 2", "Group 3"
-colors = ["#000000"] #, "#37AA9C", "#94F3E4"
-# Create distplot with curve_type set to "normal"
-fig_todist = ff.create_distplot(toff_hist_data, toff_group_labels, show_hist=False, colors=colors)
-fig_todist.update_layout(
-    xaxis_title="ΔColor",
-    yaxis_title="KDE"
-)
-vbtoff_hist_data = [df.loc[df["in_toff"] & df["vbok"], "vbroad"]]
-vbtoff_group_labels = ["Turn-off vbroad"] #, "Group 2", "Group 3"
-colors = ["#000000"] #, "#37AA9C", "#94F3E4"
-# Create distplot with curve_type set to "normal"
-fig_vbtodist = ff.create_distplot(vbtoff_hist_data, vbtoff_group_labels, show_hist=False, colors=colors)
-fig_vbtodist.update_layout(
-    xaxis_title="v<sub>broad</sub>",
-    yaxis_title="KDE"
-)
+# toff_hist_data = [df.loc[df["in_toff"], "dcn"]]
+# toff_group_labels = [""] #, "Group 2", "Group 3"
+# colors = ["#000000"] #, "#37AA9C", "#94F3E4"
+# # Create distplot with curve_type set to "normal"
+# fig_todist = ff.create_distplot(toff_hist_data, toff_group_labels, show_hist=False, colors=colors)
+# fig_todist.update_layout(
+#     xaxis_title="ΔColor",
+#     yaxis_title="KDE"
+# )
+# vbtoff_hist_data = [df.loc[df["in_toff"] & df["vbok"], "vbroad"]]
+# vbtoff_group_labels = ["Turn-off vbroad"] #, "Group 2", "Group 3"
+# colors = ["#000000"] #, "#37AA9C", "#94F3E4"
+# # Create distplot with curve_type set to "normal"
+# fig_vbtodist = ff.create_distplot(vbtoff_hist_data, vbtoff_group_labels, show_hist=False, colors=colors)
+# fig_vbtodist.update_layout(
+#     xaxis_title="v<sub>broad</sub>",
+#     yaxis_title="KDE"
+# )
 
-# fig4 = px.scatter(df.loc[df["in_toff"] & df["vbok"]], x="dcn", y="vbroad", hover_data="source_id",
-#         opacity=0.99, color= "w_vbroad", color_continuous_scale = "greens", trendline="ols", 
-#         error_y="vbroad_error")
 
-# fig4.update_traces(marker=dict(size=12,
-#                     line=dict(width=0.1,color="#000000")),
-#                     error_y=dict(color="#000000", width=0.1)
-#                 )
+fig4 = px.scatter(df.loc[df["in_toff"] & df["vbok"]], x="dcn", y="vbroad", hover_data="source_id",
+        opacity=0.99, color= "w_vbroad", color_continuous_scale = "greens", trendline="ols", 
+        error_y="vbroad_error")
 
-# fig_vbdc = go.Figure(data = fig4.data).update_layout(coloraxis=fig4.layout.coloraxis)
+fig4.update_traces(marker=dict(size=12,
+                    line=dict(width=0.1,color="#000000")),
+                    error_y=dict(color="#000000", width=0.1)
+                )
+
+fig_vbdc = go.Figure(data = fig4.data).update_layout(coloraxis=fig4.layout.coloraxis)
 
 
 # fig_vbdc.update_layout(xaxis_title="ΔColor",
