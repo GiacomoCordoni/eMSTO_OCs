@@ -3,3 +3,4 @@ streamlit==1.36.0
 pandas==2.2.2
 plotly==5.18.0
 scipy
+statmodels
