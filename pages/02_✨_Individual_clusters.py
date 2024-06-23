@@ -68,10 +68,15 @@ fig_cmd.update_layout(xaxis_title='G<sub>BP</sub> - G<sub>BP</sub>',
                   coloraxis_colorbar=dict(title='v<sub>broad</sub>'),
                   yaxis_range=[17,5])
 
-# toff_hist_data = [df.loc[df['in_toff'], 'dcn']]
-# toff_group_labels = [''] #, 'Group 2', 'Group 3'
-# colors = ['#000000'] #, '#37AA9C', '#94F3E4'
-# # Create distplot with curve_type set to 'normal'
+toff_hist_data = [df.loc[df['in_toff'], 'dcn']]
+toff_group_labels = [''] #, 'Group 2', 'Group 3'
+colors = ['#000000'] #, '#37AA9C', '#94F3E4'
+# Create distplot with curve_type set to 'normal'
+fig_todist = px.histogram(df.loc[df['in_toff']], x='dcn')
+fig_todist.update_layout(
+    xaxis_title='ΔColor',
+    yaxis_title='KDE'
+) 
 # fig_todist = ff.create_distplot(toff_hist_data, toff_group_labels, show_hist=False, colors=colors)
 # fig_todist.update_layout(
 #     xaxis_title='ΔColor',
@@ -130,7 +135,7 @@ with container1:
         st.plotly_chart(fig_cmd, use_container_width=True)
     with col2:
         st.subheader('Turn-off $\Delta\mathrm{Color}$ dist.')
-        # st.plotly_chart(fig_todist, use_container_width=True)     
+        st.plotly_chart(fig_todist, use_container_width=True)     
     with col3:
         st.subheader('Turn-off $v_\mathrm{broad}$ dist. ')
         # st.plotly_chart(fig_vbtodist, use_container_width=True)
