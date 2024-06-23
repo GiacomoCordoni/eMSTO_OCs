@@ -70,24 +70,24 @@ fig_cmd.update_layout(xaxis_title="G<sub>BP</sub> - G<sub>BP</sub>",
                   coloraxis_colorbar=dict(title="v<sub>broad</sub>"),
                   yaxis_range=[17,5])
 
-# toff_hist_data = [df.loc[df["in_toff"], "dcn"]]
-# toff_group_labels = [""] #, "Group 2", "Group 3"
-# colors = ["#000000"] #, "#37AA9C", "#94F3E4"
-# # Create distplot with curve_type set to "normal"
-# fig_todist = ff.create_distplot(toff_hist_data, toff_group_labels, show_hist=False, colors=colors)
-# fig_todist.update_layout(
-#     xaxis_title="ΔColor",
-#     yaxis_title="KDE"
-# )
-# vbtoff_hist_data = [df.loc[df["in_toff"] & df["vbok"], "vbroad"]]
-# vbtoff_group_labels = ["Turn-off vbroad"] #, "Group 2", "Group 3"
-# colors = ["#000000"] #, "#37AA9C", "#94F3E4"
-# # Create distplot with curve_type set to "normal"
-# fig_vbtodist = ff.create_distplot(vbtoff_hist_data, vbtoff_group_labels, show_hist=False, colors=colors)
-# fig_vbtodist.update_layout(
-#     xaxis_title="v<sub>broad</sub>",
-#     yaxis_title="KDE"
-# )
+toff_hist_data = [df.loc[df["in_toff"], "dcn"]]
+toff_group_labels = [""] #, "Group 2", "Group 3"
+colors = ["#000000"] #, "#37AA9C", "#94F3E4"
+# Create distplot with curve_type set to "normal"
+fig_todist = ff.create_distplot(toff_hist_data, toff_group_labels, show_hist=False, colors=colors)
+fig_todist.update_layout(
+    xaxis_title="ΔColor",
+    yaxis_title="KDE"
+)
+vbtoff_hist_data = [df.loc[df["in_toff"] & df["vbok"], "vbroad"]]
+vbtoff_group_labels = ["Turn-off vbroad"] #, "Group 2", "Group 3"
+colors = ["#000000"] #, "#37AA9C", "#94F3E4"
+# Create distplot with curve_type set to "normal"
+fig_vbtodist = ff.create_distplot(vbtoff_hist_data, vbtoff_group_labels, show_hist=False, colors=colors)
+fig_vbtodist.update_layout(
+    xaxis_title="v<sub>broad</sub>",
+    yaxis_title="KDE"
+)
 
 # fig4 = px.scatter(df.loc[df["in_toff"] & df["vbok"]], x="dcn", y="vbroad", hover_data="source_id",
 #         opacity=0.99, color= "w_vbroad", color_continuous_scale = "greens", trendline="ols", 
