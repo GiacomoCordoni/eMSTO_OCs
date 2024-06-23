@@ -65,18 +65,30 @@ fig1_2.update_traces(marker=dict(size=7,
 fig_cmd = go.Figure(data = fig1_1.data + fig1_2.data).update_layout(coloraxis=fig1_2.layout.coloraxis)
 fig_cmd.update_layout(xaxis_title='G<sub>BP</sub> - G<sub>BP</sub>',
                   yaxis_title='G<sub>BP</sub>',
-                  coloraxis_colorbar=dict(title='v<sub>broad</sub>'),
+                  coloraxis_colorbar=dict(title='v<sub>broad</sub>[km/s]'),
                   yaxis_range=[17,5])
 
-toff_hist_data = [df.loc[df['in_toff'], 'dcn']]
 toff_group_labels = [''] #, 'Group 2', 'Group 3'
 colors = ['#000000'] #, '#37AA9C', '#94F3E4'
 # Create distplot with curve_type set to 'normal'
-fig_todist = px.histogram(df.loc[df['in_toff']], x='dcn')
+fig_todist = px.histogram(df.loc[df['in_toff']], x='dcn', histnorm='probability', nbins=10)
 fig_todist.update_layout(
     xaxis_title='ΔColor',
-    yaxis_title='KDE'
+    yaxis_title='Density'
 ) 
+
+vbtoff_hist_data = [df.loc[df['in_toff'] & df['vbok'], 'vbroad']]
+vbtoff_group_labels = ['Turn-off vbroad'] #, 'Group 2', 'Group 3'
+colors = ['#000000'] #, '#37AA9C', '#94F3E4'
+# Create distplot with curve_type set to 'normal'
+fig_vbtodist = px.histogram(df.loc[df['in_toff'] & df['vbok']], x='vbroad', histnorm='probability', nbins=10)
+fig_vbtodist.update_layout(
+    xaxis_title='v<sub>broad</sub>[km/s]',
+    yaxis_title='Density'
+)
+
+
+
 # fig_todist = ff.create_distplot(toff_hist_data, toff_group_labels, show_hist=False, colors=colors)
 # fig_todist.update_layout(
 #     xaxis_title='ΔColor',
@@ -94,7 +106,7 @@ fig_todist.update_layout(
 
 
 fig4 = px.scatter(df.loc[df['in_toff'] & df['vbok']], x='dcn', y='vbroad', hover_data='source_id',
-        opacity=0.99, color= 'w_vbroad', color_continuous_scale = 'greens', 
+        opacity=0.99, color= 'w_vbroad', color_continuous_scale = 'greens', trendline='ols',
         error_y='vbroad_error')
 
 fig4.update_traces(marker=dict(size=12,
@@ -120,7 +132,7 @@ fig5.update_traces(marker=dict(size=12,
                         error_y=dict(color='#000000', width=0.1)
                     )
 fig_dcrhk = go.Figure(data = fig5.data).update_layout(coloraxis=fig5.layout.coloraxis)
-fig_dcrhk.update_layout(yaxis_title='v<sub>broad</sub>',
+fig_dcrhk.update_layout(yaxis_title='v<sub>broad</sub> [km/s]',
                   xaxis_title='log R<sub>HK</sub>',
                   coloraxis_colorbar=dict(title='G<sub>RP</sub>'),
                   ) #yaxis_range=[20,5]
@@ -138,7 +150,7 @@ with container1:
         st.plotly_chart(fig_todist, use_container_width=True)     
     with col3:
         st.subheader('Turn-off $v_\mathrm{broad}$ dist. ')
-        # st.plotly_chart(fig_vbtodist, use_container_width=True)
+        st.plotly_chart(fig_vbtodist, use_container_width=True)
 
 
 container2 = st.container()
