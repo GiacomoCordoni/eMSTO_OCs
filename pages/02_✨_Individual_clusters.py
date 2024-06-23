@@ -129,12 +129,12 @@ with container1:
     with col1:
         st.subheader("Colour Magnitude Diagram")
         st.plotly_chart(fig_cmd, use_container_width=True)
-    with col2:
-        st.subheader("Turn-off $\Delta\mathrm{Color}$ dist.")
-        st.plotly_chart(fig_todist, use_container_width=True)     
-    with col3:
-        st.subheader("Turn-off $v_\mathrm{broad}$ dist. ")
-        st.plotly_chart(fig_vbtodist, use_container_width=True)
+    # with col2:
+    #     st.subheader("Turn-off $\Delta\mathrm{Color}$ dist.")
+    #     st.plotly_chart(fig_todist, use_container_width=True)     
+    # with col3:
+    #     st.subheader("Turn-off $v_\mathrm{broad}$ dist. ")
+    #     st.plotly_chart(fig_vbtodist, use_container_width=True)
 
 
 container2 = st.container()
