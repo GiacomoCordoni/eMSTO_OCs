@@ -88,8 +88,7 @@ fig_cmd.update_layout(xaxis_title='G<sub>BP</sub> - G<sub>BP</sub>',
 # )
 
 
-df['vbtoff'] = (df['in_toff']) & (df['vbok'])
-fig4 = px.scatter(df.loc[df['vbtoff']], x='dcn', y='vbroad', hover_data='source_id',
+fig4 = px.scatter(df.loc[df['in_toff'] & df['vbok']], x='dcn', y='vbroad', hover_data='source_id',
         opacity=0.99, color= 'w_vbroad', color_continuous_scale = 'greens', 
         error_y='vbroad_error')
 
@@ -101,25 +100,25 @@ fig4.update_traces(marker=dict(size=12,
 fig_vbdc = go.Figure(data = fig4.data).update_layout(coloraxis=fig4.layout.coloraxis)
 
 
-# fig_vbdc.update_layout(xaxis_title='ΔColor',
-#                   yaxis_title='v<sub>broad</sub>',
-#                   coloraxis_colorbar=dict(title='v<sub>broad</sub>/εv<sub>broad</sub>'),
-#                   ) #yaxis_range=[20,5]
+fig_vbdc.update_layout(xaxis_title='ΔColor',
+                  yaxis_title='v<sub>broad</sub>',
+                  coloraxis_colorbar=dict(title='v<sub>broad</sub>/εv<sub>broad</sub>'),
+                  ) #yaxis_range=[20,5]
 
 
-# fig5 = px.scatter(df.loc[df['log_rhk'].notna()], x='dcn', y='log_rhk', hover_data='source_id',
-#         opacity=0.99, color= 'vbroad', color_continuous_scale = 'rdbu_r', 
-#         error_y='log_rhk_err')
+fig5 = px.scatter(df.loc[df['log_rhk'].notna()], x='dcn', y='log_rhk', hover_data='source_id',
+        opacity=0.99, color= 'vbroad', color_continuous_scale = 'rdbu_r', 
+        error_y='log_rhk_err')
 
-# fig5.update_traces(marker=dict(size=12,
-#                         line=dict(width=0.1,color='#000000')), 
-#                         error_y=dict(color='#000000', width=0.1)
-#                     )
-# fig_dcrhk = go.Figure(data = fig5.data).update_layout(coloraxis=fig5.layout.coloraxis)
-# fig_dcrhk.update_layout(yaxis_title='v<sub>broad</sub>',
-#                   xaxis_title='log R<sub>HK</sub>',
-#                   coloraxis_colorbar=dict(title='G<sub>RP</sub>'),
-#                   ) #yaxis_range=[20,5]
+fig5.update_traces(marker=dict(size=12,
+                        line=dict(width=0.1,color='#000000')), 
+                        error_y=dict(color='#000000', width=0.1)
+                    )
+fig_dcrhk = go.Figure(data = fig5.data).update_layout(coloraxis=fig5.layout.coloraxis)
+fig_dcrhk.update_layout(yaxis_title='v<sub>broad</sub>',
+                  xaxis_title='log R<sub>HK</sub>',
+                  coloraxis_colorbar=dict(title='G<sub>RP</sub>'),
+                  ) #yaxis_range=[20,5]
 
 
 container1 = st.container()
@@ -143,7 +142,7 @@ with container2:
     with col4:
         st.header('$\Delta\mathrm{Color}$ - $v_\mathrm{broad}$  relation')
         st.info('$R_\mathcal{S} = %.3f \pm %.3f$' %(dfto.loc[cluster_name, 'corr'], dfto.loc[cluster_name,'ecorr']))
-        # st.plotly_chart(fig_vbdc, use_container_width=True)
+        st.plotly_chart(fig_vbdc, use_container_width=True)
         
 
 
