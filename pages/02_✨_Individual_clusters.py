@@ -106,7 +106,7 @@ fig_vbtodist.update_layout(
 
 
 fig4 = px.scatter(df.loc[df['in_toff'] & df['vbok']], x='dcn', y='vbroad', hover_data='source_id',
-        opacity=0.99, color= 'w_vbroad', color_continuous_scale = 'greens', trendline='ols',
+        opacity=0.99, color= 'w_vbroad', color_continuous_scale = 'greens',
         error_y='vbroad_error')
 
 fig4.update_traces(marker=dict(size=12,
