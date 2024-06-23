@@ -89,7 +89,7 @@ fig_cmd.update_layout(xaxis_title='G<sub>BP</sub> - G<sub>BP</sub>',
 
 
 df['vbtoff'] = df['in_toff'] & df['vbok']
-fig4 = px.scatter(df.loc[], x='dcn', y='vbroad', hover_data='source_id',
+fig4 = px.scatter(df.loc[df['vbtoff']], x='dcn', y='vbroad', hover_data='source_id',
         opacity=0.99, color= 'w_vbroad', color_continuous_scale = 'greens', trendline='ols', 
         error_y='vbroad_error')
 
